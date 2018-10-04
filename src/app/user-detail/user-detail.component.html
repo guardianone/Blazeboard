@@ -1,0 +1,42 @@
+<div class="user-detail">
+  <div class="empty-detail" *ngIf="user == null">Select a user to view their details</div>
+  <div *ngIf="user != null">
+    <span class="user-emblem">{{user.id}}</span>
+    <h3 class="well well-sm callsign">{{user.username}}</h3>
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-body">Name:  {{user.name}}</div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">Email:  {{user.email}}</div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">Phone:  {{user.phone}}</div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">Website:  {{user.website}}</div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          Address:  <span>{{user?.address?.street}} {{user?.address?.suite}}, </span>
+          <span>{{user?.address?.city}} {{user?.address?.zipcode}}</span>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">Coordinates:  {{user?.address?.geo?.lng}}, {{user?.address?.geo?.lat}}</div>
+      </div>
+      <h4 class="well well-sm text-center">Company</h4>
+      <div class="row">
+        <h5 class="col-sm-4">{{user.company?.name}}</h5>
+        <blockquote class="col-sm-8">
+          <p>
+            {{user.company?.catchPhrase}}
+          </p>
+        </blockquote>
+      </div>
+      <ng-container *ngIf="user.company != null && user.company.bs != null">
+        <span *ngFor="let bs of user.company.bs.split(' ')" class="label label-default bs">{{bs}}</span>
+      </ng-container>
+    </div>
+  </div>
+</div>

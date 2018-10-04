@@ -1,0 +1,21 @@
+<div>
+  
+  <div class="sub-title">
+    <h2>Users</h2>
+  </div>
+
+  <div class="row">
+    <!-- user list -->
+    <ul class="user-list col-sm-5">
+      <li *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser">
+        <div class="user">
+          <span class="user-emblem">{{user.id}}</span>
+          <span class="callsign">{{user.username}}</span>
+        </div>
+      </li>
+    </ul>
+    <!-- user detail -->
+    <app-user-detail class="col-sm-7" [user]="selectedUser"></app-user-detail>
+    
+  </div>
+</div>

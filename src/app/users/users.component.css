@@ -1,0 +1,61 @@
+app-users {
+}
+
+.sub-title {
+  color: #607D8B;
+}
+
+.user-list {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.user-list li {
+  cursor: pointer;
+  background-color: #EEE;
+  margin-bottom: 5px;
+}
+
+.selected {
+  background-color: #CFD8DC;
+  color: white;
+}
+
+.user-list li.selected:hover {
+  background-color: #BBD8DC;
+  color: white;
+}
+
+.user-list li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+}
+
+.user-list li:hover .user-emblem {
+  color: black;
+}
+
+.user-list li.selected:hover .user-emblem {
+  color: white;
+}
+
+.user {
+  line-height: 2em;
+}
+
+.user-emblem {
+  background-color: #607D8B;
+  line-height: inherited;
+  display: inline-block;
+  padding: 0px 10px;
+  font-weight: bold;
+}
+
+.callsign {
+  margin: 10px;
+}
+
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}

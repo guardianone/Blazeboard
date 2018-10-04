@@ -1,0 +1,86 @@
+<div class="posts-view">
+  <!-- the view of all posts -->
+  <ng-container *ngIf="!isCreating">
+    <div class="sub-title">
+      <h2>
+        Posts <button type="button" class="btn btn-default" (click)="onCreate()">Create Post</button>
+      </h2>
+    </div>
+
+    <div class="row">
+      <!-- post list -->
+      <ul class="post-list col-sm-5">
+        <li *ngFor="let post of posts" (click)="onSelect(post)" [class.selected]="post === selectedPost">
+          <div class="post">
+            <span class="post-emblem">{{post.id}}</span>
+            <span class="callsign">{{post.title}}</span>
+          </div>
+        </li>
+      </ul>
+      <!-- post detail -->
+      <app-post-detail class="col-sm-7" [post]="selectedPost"></app-post-detail>
+    </div>
+  </ng-container>
+  
+  <!-- the form to create a new post-->
+  <ng-container *ngIf="isCreating && !isSubmitted && !isError">
+    <div class="sub-title">
+      <h2>
+        Create Post <button type="button" class="btn btn-default" (click)="onCancel()">Cancel</button>
+      </h2>
+    </div>
+
+    <form #postForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" required class="form-control" id="title" [(ngModel)]="model.title"
+               name="title" #title="ngModel" maxlength="24" pattern="[A-Za-z0-9]*">
+        <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+          <div *ngIf="title?.errors?.required">
+            Title is required.
+          </div>
+          <div *ngIf="title?.errors?.maxlength">
+            Title must be 24 characters long or less.
+          </div>
+          <div *ngIf="title?.errors?.pattern">
+            Title must contain numbers and letters only.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="body">Body:</label>
+        <textarea required rows="10" class="form-control" id="body" [(ngModel)]="model.body"
+                  name="body" #body="ngModel" maxlength="50"></textarea>
+        <div [hidden]="body.valid || body.pristine" class="alert alert-danger">
+          Body is required
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!postForm.form.valid">Submit</button>
+    </form>
+  </ng-container>
+  
+  <!-- success message -->
+  <ng-container *ngIf="isSubmitted">
+    <div class="sub-title">
+      <h2>
+        Create Post <button type="button" class="btn btn-default" (click)="onCancel()">Return</button>
+      </h2>
+      <div class="alert alert-success">
+        <strong>Success!</strong> Post added.
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- failure message -->
+  <ng-container *ngIf="isError">
+    <div class="sub-title">
+      <h2>
+        Create Post <button type="button" class="btn btn-default" (click)="onCancel()">Return</button>
+      </h2>
+      <div class="alert alert-danger">
+        <strong>Sorry!</strong> There was a problem adding the post.
+      </div>
+    </div>
+  </ng-container>
+</div>
+

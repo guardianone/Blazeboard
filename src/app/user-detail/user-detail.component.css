@@ -1,0 +1,27 @@
+.user-detail {
+}
+
+.empty-detail {
+  position: relative;
+  top: 50%;
+  text-align: center;
+}
+
+.user-emblem {
+  font-weight: bold;
+  background-color: #607D8B;
+  display: block;
+  padding: 0px 0px;
+  text-align: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.callsign {
+  text-align: center;
+}
+
+.bs {
+  margin-right: 2px;
+}

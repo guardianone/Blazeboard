@@ -1,0 +1,27 @@
+<div class="container">
+  
+  <div class="title">
+    <h1>{{ title }}</h1>
+  </div>
+  <!-- Navigation -->
+  <ul class="nav nav-pills">
+    <li class="active">
+      <a data-toggle="pill" href="#users">Users</a>
+    </li>
+    <li>
+      <a data-toggle="pill" href="#posts">Posts</a>
+    </li>
+  </ul>
+  <!-- Main content views. -->
+  <div class="tab-content">
+    <div id="users" class="tab-pane fade in active">
+      <app-users></app-users>
+    </div>
+    <div id="posts" class="tab-pane fade">
+      <app-posts></app-posts>
+    </div>
+  </div>
+  
+</div>
+
+

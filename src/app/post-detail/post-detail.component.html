@@ -1,0 +1,14 @@
+<div class="post-detail">
+  <div class="empty-detail" *ngIf="post == null">Select a post to view details</div>
+  <div *ngIf="post != null">
+    <span class="post-emblem">{{post.id}}</span>
+    <h3 class="well well-sm callsign">{{post.title}}</h3>
+    <blockquote>
+      <p>
+        {{post.body}}
+      </p>
+      <footer>{{post.userId}}</footer>
+    </blockquote>
+  </div>
+</div>
+
